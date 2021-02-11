@@ -33,7 +33,7 @@ export default class PostListItem extends Component {
     render() {
 
 
-        const {label} = this.props; // свойста которые будут приходить в каждый новосозданный компонент 
+        const {label, onDelete} = this.props; // свойста которые будут приходить в каждый новосозданный компонент 
         const {important, like} = this.state;
         
 
@@ -58,17 +58,18 @@ export default class PostListItem extends Component {
                 </span>
                 <div className='d-flex justify-content-center align-items-center'>
                     <button 
-                        type='button' 
-                        className='btn-star btn-sm'
-                        onClick={this.onImportant}>
-                    <i className='fa fa-star'></i>
+                    type='button' 
+                    className='btn-star btn-sm'
+                    onClick={this.onImportant}>
+                        <i className='fa fa-star'></i>
                     </button>
                     <button 
-                        type='button' 
-                        className='btn-trash btn-sm'>
-                    <i className='fa fa-trash-o'></i>
+                    type='button' 
+                    className='btn-trash btn-sm'
+                    onClick={onDelete}>
+                        <i className='fa fa-trash-o'></i>
                     </button>
-                    <i className='fa fa-heart'></i>
+                        <i className='fa fa-heart'></i>
                 </div>
             </div>
         )
