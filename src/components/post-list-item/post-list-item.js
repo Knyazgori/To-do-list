@@ -6,9 +6,11 @@ export default class PostListItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            important: false
+            important: false,
+            like: false
         };
         this.onImportant = this.onImportant.bind(this);
+        this.onLike = this.onLike.bind(this);
     }
 
     onImportant() {
@@ -19,23 +21,39 @@ export default class PostListItem extends Component {
         )
     }
 
+    onLike() {
+        this.setState(
+            ({like}) => ({
+                like: !like
+        })
+        )
+    }
+
 
     render() {
 
 
         const {label} = this.props; // свойста которые будут приходить в каждый новосозданный компонент 
-        const {important} = this.state;
-
+        const {important, like} = this.state;
+        
 
         let classNames = 'app-list-item d-flex justify-content-between';
+
+
         if (important) {
             classNames +=' important'; // если important true - добавляем его в classNames
+        }
+
+        if (like) {
+            classNames +=' like'; // если like true - добавляем его в classNames
         }
 
 
         return (
             <div className={classNames}>
-                <span>
+                <span
+                className="app-list-item-label"
+                onClick={this.onLike}>
                     {label}
                 </span>
                 <div className='d-flex justify-content-center align-items-center'>
